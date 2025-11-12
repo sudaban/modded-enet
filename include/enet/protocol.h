@@ -64,22 +64,29 @@ typedef enum _ENetProtocolFlag
 
 typedef struct _ENetProtocolHeader
 {
-   enet_uint16 peerID;
-   enet_uint16 sentTime;
+    enet_uint16 peerID;
+    enet_uint16 sentTime;
 } ENET_PACKED ENetProtocolHeader;
+
+typedef struct _ENetNewProtocolHeader
+{
+    enet_uint16 integrity[3];
+    enet_uint16 peerID;
+    enet_uint16 sentTime;
+} ENET_PACKED ENetNewProtocolHeader;
 
 typedef struct _ENetProtocolCommandHeader
 {
-   enet_uint8 command;
-   enet_uint8 channelID;
-   enet_uint16 reliableSequenceNumber;
+    enet_uint8 command;
+    enet_uint8 channelID;
+    enet_uint16 reliableSequenceNumber;
 } ENET_PACKED ENetProtocolCommandHeader;
 
 typedef struct _ENetProtocolAcknowledge
 {
-   ENetProtocolCommandHeader header;
-   enet_uint16 receivedReliableSequenceNumber;
-   enet_uint16 receivedSentTime;
+    ENetProtocolCommandHeader header;
+    enet_uint16 receivedReliableSequenceNumber;
+    enet_uint16 receivedSentTime;
 } ENET_PACKED ENetProtocolAcknowledge;
 
 typedef struct _ENetProtocolConnect

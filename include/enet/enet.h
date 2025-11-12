@@ -312,6 +312,7 @@ typedef struct _ENetPeer
    ENetList      outgoingCommands;
    ENetList      dispatchedCommands;
    enet_uint16   flags;
+   enet_uint16   nonce; // what the fuck is this shit?
    enet_uint16   reserved;
    enet_uint16   incomingUnsequencedGroup;
    enet_uint16   outgoingUnsequencedGroup;
@@ -394,6 +395,8 @@ typedef struct _ENetHost
    size_t               duplicatePeers;              /**< optional number of allowed peers from duplicate IPs, defaults to ENET_PROTOCOL_MAXIMUM_PEER_ID */
    size_t               maximumPacketSize;           /**< the maximum allowable packet size that may be sent or received on a peer */
    size_t               maximumWaitingData;          /**< the maximum aggregate amount of buffer space a peer may use waiting for packets to be delivered */
+   enet_uint8           clientUsesNewProto;     /**< for gtps protocol */
+   enet_uint8           serverUsesNewProto;     /**< for gtps protocol */
 } ENetHost;
 
 /**
